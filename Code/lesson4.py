@@ -33,4 +33,27 @@ class mylist:
             print(x.get_value())
             x = x.get_next()
         print(x.get_value())
-    
+
+    def delete_head(self):
+        self.__first=self.__first.get_next()
+
+    def delete_last(self):
+        x=self.__first
+        y=None
+        while x.get_next() != None:
+            y=x
+            x=x.get_next()
+        y.set_next(None)
+
+    def put_into(self,n,x):
+        a=self.__first
+        for i in range(n-1):
+            a = a.get_next()
+        b = Node()
+        b.set_value(x)
+        b.set_next(a.get_next())
+        a.set_next(b)
+        
+ L=mylist(); L.add(1);  L.add(2);L.add(3);
+ L.print_list();L.put_into(2,6);
+ 
