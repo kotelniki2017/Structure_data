@@ -36,6 +36,7 @@ class node():
     def set_right(self,m_node):
         self.__right = m_node
 
+
 class tree():
 
     __top = None
@@ -113,8 +114,6 @@ class tree():
             return self.count_leaves(current_node.get_left()) + self.count_leaves(current_node.get_right())
 
     def depth_tree(self,current_node):
-        if current_node == None:
-            return 0
         if (current_node.get_left() == None) and (current_node.get_right() == None):
             return 0
         elif (current_node.get_left() == None) and (current_node.get_right() != None):
@@ -161,134 +160,15 @@ class tree():
         else:
             print("ERROR")
 
-
-    def infix_traverse(self,  current_node):
-        if current_node == None:
-            return []
-        elif (current_node.get_left()==[]) & \
-             (current_node.get_right()==[]):
-            return [current_node.get_info()]
-        elif (current_node.get_left()!=[]) & \
-             (current_node.get_right()==[]):
-            return \
-                self.infix_traverse(current_node.get_left())+ \
-                [current_node.get_info()]
-        elif (current_node.get_left()==[]) & \
-             (current_node.get_right()!=[]):
-            return  [current_node.get_info()]+\
-                self.infix_traverse(current_node.get_right())
-        else:
-            return  \
-                self.infix_traverse(current_node.get_left())+\
-                [current_node.get_info()]+\
-                self.infix_traverse(current_node.get_right())
-
-    def postfix_traverse(self,  current_node):
-        if current_node == None:
-            return []
-        elif (current_node.get_left()==[]) & \
-             (current_node.get_right()==[]):
-            return [current_node.get_info()]
-        elif (current_node.get_left()!=[]) & \
-             (current_node.get_right()==[]):
-            return \
-                [current_node.get_info()] + \
-                self.postfix_traverse(current_node.get_left())
-        elif (current_node.get_left()==[]) & \
-             (current_node.get_right()!=[]):
-            return  \
-                self.postfix_traverse(current_node.get_right())+\
-                [current_node.get_info()]
-        else:
-            return  \
-                self.postfix_traverse(current_node.get_right())+\
-                [current_node.get_info()]+\
-                self.postfix_traverse(current_node.get_left())
-
-
-    def prefix_traverse(self,  current_node):
-        if current_node == None:
-            return []
-        elif (current_node.get_left()==[]) & \
-             (current_node.get_right()==[]):
-            return [current_node.get_info()]
-        elif (current_node.get_left()!=[]) & \
-             (current_node.get_right()==[]):
-            return \
-                [current_node.get_info()] + \
-                self.prefix_traverse(current_node.get_left())
-        elif (current_node.get_left()==[]) & \
-             (current_node.get_right()!=[]):
-            return [current_node.get_info()]+\
-                self.prefix_traverse(current_node.get_right())\
-                
-        else:
-            return  [current_node.get_info()]+\
-                self.prefix_traverse(current_node.get_left())+\
-                self.prefix_traverse(current_node.get_right())
-
-    
-    def find_min(self,  current_node):
-        if (current_node.get_left()==None):
-            return current_node.get_info()
-        else:
-            return self.find_min(current_node.get_left())
-    def find_max(self,  current_node):
-        if (current_node.get_right()==None):
-            return current_node.get_info()
-        else:
-            return self.find_max(current_node.get_right())
+        
+            
         
 
-    def delete_node(self,current_node):
-        if (current_node.get_left()==None)&(current_node.get_right()==None):
-            if current_node.get_parent().get_left()==current_node:
-                current_node.get_parent().set_left(None)
-                current_node.set_parent(None)
-                return
-            else:
-                current_node.get_parent().set_right(None)
-                current_node.set_parent(None)
-                return
-        if (current_node.get_left()!=None)&(current_node.get_right()==None):
-            if (current_node.get_left().get_left()==None)&(current_node.get_left().get_right()==None):
-                current_node.set_value(current_node.get_left().get_info())
-                current_node.get_left().set_parent(None)
-                current_node.set_left(None)
-                return
-        if (current_node.get_left()==None)&(current_node.get_right()!=None):
-            if (current_node.get_right().get_left()==None)&(current_node.get_right().get_right()==None):
-                current_node.set_value(current_node.get_right().get_info())
-                current_node.get_right().set_parent(None)
-                current_node.set_right(None)
-                return
-        if self.depth_tree(current_node.get_left())>=self.depth_tree(current_node.get_right()):
-            current_node.set_value(current_node.get_left().get_info())
-            current_node=current_node.get_left()
-            return self.delete_node(current_node)
-        else:
-            current_node.set_value(current_node.get_right().get_info())
-            current_node=current_node.get_right()
-            return self.delete_node(current_node)
 
 
-           
-    def get_node(self,value,current_node):
-        if current_node.get_info()==value:
-            return current_node
-        #elif (current_node.get_right()== None)&(current_node.get_left()==None): 
-        #    return 'Not found'
-        elif current_node.get_info()>value:
-            return self.get_node(value,current_node.get_left())
-        else:
-            return self.get_node(value,current_node.get_right())
+r=tree(5)
+r.add_list([6,47,8,3,2,9,10])
 
-
-
-#r=tree(5)
-#r.add_list([6,47,8,3,2,9,10])
-r=tree(6)
-r.add_list([1,8,6,5,9,4,0,7,10,-4,9.5,11])
 
 
 
