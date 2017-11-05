@@ -1,3 +1,6 @@
+#random.seed
+import random
+
 class Hashtable:
     __size=None
     __table=None
