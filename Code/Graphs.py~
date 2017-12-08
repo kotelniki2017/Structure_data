@@ -1,10 +1,14 @@
 class node():
     __value = None
     __links = None
+    __lable=None
+    __d=None
     
     def __init__(self, n):
         self.__value = n
         self.__links = []
+        self.__lable=False
+        self.__d=None
         
     def set_value(self, n):
         self.__value = n
@@ -24,7 +28,12 @@ class node():
             if (i[1]!=None):
                 result.append(i[0])
         return result
-                
+
+    def get_weight(self,node2):
+        for i in self.get_links():
+            if  i[0]==node2:
+                return i[1]
+        return None
     
     def print_weight_links(self):
         a = []
@@ -78,7 +87,7 @@ class graph():
         return close_nodes
         
             
-
+    
                 
     def vizualize(self):
         for i in self.__list_nodes:
@@ -86,7 +95,36 @@ class graph():
 
     def get_list_nodes(self):
         return self.__list_nodes
+
+   
+            
+
+
+def deykstra(self,current_node):
+        for i in self.get_list_nodes():
+            i.__lable=False
+            i.__d=None
+        current_node.__lable=True
+        current_node.__d=0
+        pr=True
+        while pr:
+            pr=False
+            for i in self.get_list_nodes():
+                if i.__ lable==False:
+                    pr=True
+                    break
+            if pr:
+                for i in  current_node.get_near_links():
+                    if  i.__lable==False:
+                        if i.__d==None:
+                            i.__d=current_node.__d+current_node.get_weight(i)
+                        else:
+                            if i.__d>current_node.__d+current_node.get_weight(i):
+                                 i.__d=current_node.__d+current_node.get_weight(i)
+                for i in
+            
                 
+            
 G = graph()
 G.create_from_adjacency([[None, 2, 10,None, None], [None, None, 3, -1, 7], [None, None, None, 5, None], [0, None, None, None, 1], [1, None, 12, None, None]])
 #G.vizualize()
